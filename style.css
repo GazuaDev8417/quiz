@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau:ital,wght@1,100&display=swap');
+
 body{
     height: 100vh;
     margin: 0;
@@ -52,6 +54,12 @@ main .text-about-msg{
     margin: 10vh 20px 10px;
 }
 
+main .text-about-msg p{
+    font-family: 'Ysabeau', sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
 form .message #msg{
     width: 97%;
     border: none;
@@ -65,6 +73,7 @@ form fieldset{
 main form fieldset legend{
     font-size: 18pt;
 }
+
 /* Ínicio das informações adicionais */
 .add-info{
     grid-area: add;

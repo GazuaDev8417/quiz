@@ -11,6 +11,7 @@ let sexOrientation
 const userName = document.getElementById('name')
 const tel = document.getElementById('whatsapp')
 const email = document.getElementById('email')
+const msg = document.getElementById('msg')
 // Add info variables
 var selectedMusicStyles = document.querySelectorAll('input[type="checkbox"]')
 var selectedSports = document.querySelectorAll('input[name="sports"]')
@@ -84,6 +85,7 @@ document.getElementById('form').addEventListener('submit', (e)=>{
             name: userName.value,
             whatsapp: tel.value,
             email: email.value,
+            message: msg. value,
             genre: other.value,
             music: JSON.stringify(musicStyles),
             sports: JSON.stringify(sportsModalities)
@@ -94,6 +96,7 @@ document.getElementById('form').addEventListener('submit', (e)=>{
             name: userName.value,
             whatsapp: tel.value,
             email: email.value,
+            message: msg.value,
             genre: sexOrientation,
             music: JSON.stringify(musicStyles),
             sports: JSON.stringify(sportsModalities)
