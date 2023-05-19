@@ -122,6 +122,10 @@ main .popup{
     padding-bottom: 20px;
     border-radius: 10px;
     box-shadow: 2px 2px 4px;
+
+    @media(max-width: 600px){
+        width: 90%;
+    }
 }
 
 main .popup .popup-firstContents{
@@ -138,6 +142,10 @@ main .popup .card{
     padding: 5px 5px 0 10px;
     margin: auto;
     border-radius: 10px;
+
+    @media(max-width: 600px){
+        width: 90%;
+    }
 }
 
 main .popup .card:hover{
@@ -170,6 +178,10 @@ main .popup .button{
     box-shadow: 2px 2px 4px;
     float: right;
     margin: 10px;
+
+    @media(max-width: 600px){
+        float: center;
+    }
 }
 
 main form fieldset{
