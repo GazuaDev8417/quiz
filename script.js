@@ -49,7 +49,9 @@ const showUserList = ()=>{
         return`
             <div class='card'>
                 <div>
-                    <div>${user.name}</div>
+                    <div style='text-align:center;'>
+                        <b>${user.name}</b>
+                    </div>
                     <p>Preferências musicais:<br>
                         ${JSON.parse(user.music).map(music =>' '+music)}</p>
                     <p>Esportes:<br>

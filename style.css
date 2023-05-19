@@ -117,7 +117,7 @@ main .popup{
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.9);
     width: 35%;
     padding-bottom: 20px;
     border-radius: 10px;
@@ -134,8 +134,8 @@ main .popup .popup-firstContents{
 
 main .popup .card{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     color: white;
     width: 80%;
     box-shadow: 2px 2px 4px;
