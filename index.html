@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link 
+        rel="icon"
+        href="https://cdn-icons-png.flaticon.com/512/5968/5968528.png"
+        type="image/png">
     <link rel="stylesheet" href="style.css">
-    <title>Forms</title>
+    <title>Super Formulário</title>
 </head>
 <body>
-    <header>
+    <header class="main-header">
+        <h1>Super Formulário</h1>
     </header>
     <aside class="personal-info">
         <h3>Informações sobre gênero</h3>
@@ -42,18 +47,17 @@
             </div>
         </div>
     </aside>
-    <main>
-        <fieldset class="password-modal">
-            <label for="passowrd" class="text-content">
-                Agora você precisa elaborar uma senha
-            </label>
-            <input type="password" id="password" form="form" required><br>
-            <div>
-                <button type="submit" form="form">Enviar</button>
-                <button onclick="closePopup()">Cancela</button>
+    <main>      
+        <header>
+            <h3>Informações de contato</h3>
+            <div class="button" onclick="openList()">Verificar usuários cadastrados</div>
+        </header>
+        <div class="popup">
+            <div class="button" onclick="closeList()">Fechar</div>
+            <div class="popup-firstContents" style="color: white; margin: 30px;">
+                Se não está vendo os items que salvou basta atualizar a página. 
             </div>
-            </fieldset>       
-        <h3>Informações de contato</h3>
+        </div>
         <form id="form">
             <fieldset class="contact">
                 <legend>Contato</legend>
@@ -87,71 +91,71 @@
             Estilos musicais:<br><br>
             <div class="music-styles">
                 <div>
-                    <input type="checkbox" id="axe" name="axe" value="Axé" form="form">
+                    <input type="checkbox" id="axe" name="musics" value="Axé" form="form">
                     <label for="axe">Axé</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="blues" name="blues" value="Blues" form="form">
+                    <input type="checkbox" id="blues" name="musics" value="Blues" form="form">
                     <label for="blues">Blues</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="country" name="country" value="Country" form="form">
+                    <input type="checkbox" id="country" name="musics" value="Country" form="form">
                     <label for="country">Country</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="eletronica" name="eletronica" value="Eletrônica" form="form">
+                    <input type="checkbox" id="eletronica" name="musics" value="Eletrônica" form="form">
                     <label for="eletronica">Eletrônica</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="forro" name="forro" value="Forró" form="form">
+                    <input type="checkbox" id="forro" name="musics" value="Forró" form="form">
                     <label for="forro">Forró</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="funk" name="funk" value="Funk" form="form">
+                    <input type="checkbox" id="funk" name="musics" value="Funk" form="form">
                     <label for="funk">Funk</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="gospel" name="gospel" value="Gospel" form="form">
+                    <input type="checkbox" id="gospel" name="musics" value="Gospel" form="form">
                     <label for="gospel">Gospel</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="hip-hop" name="hip-hop" value="Hip-hop" form="form">
+                    <input type="checkbox" id="hip-hop" name="musics" value="Hip-hop" form="form">
                     <label for="hip-hop">Hip-hop</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="jazz" name="jazz" value="Jazz" form="form">
+                    <input type="checkbox" id="jazz" name="musics" value="Jazz" form="form">
                     <label for="jazz">Jazz</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="mpb" name="mpb" value="MPB" form="form">
+                    <input type="checkbox" id="mpb" name="musics" value="MPB" form="form">
                     <label for="mpb">MPB</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="classic" name="classic" value="Música Clássica" form="form">
+                    <input type="checkbox" id="classic" name="musics" value="Música Clássica" form="form">
                     <label for="classic">Erudita</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="pagode" name="pagode" value="Pagode" form="form">
+                    <input type="checkbox" id="pagode" name="musics" value="Pagode" form="form">
                     <label for="pagode">Pagode</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="pop" name="pop" value="Pop" form="form">
+                    <input type="checkbox" id="pop" name="musics" value="Pop" form="form">
                     <label for="pop">Pop</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="reggae" name="reggae" value="Reggae" form="form">
+                    <input type="checkbox" id="reggae" name="musics" value="Reggae" form="form">
                     <label for="reggae">Reggae</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="rock" name="rock" value="Rock" form="form">
+                    <input type="checkbox" id="rock" name="musics" value="Rock" form="form">
                     <label for="rock">Rock</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="samba" name="samba" value="Samba" form="form">
+                    <input type="checkbox" id="samba" name="musics" value="Samba" form="form">
                     <label for="samba">Samba</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="sertanejo" name="sertanejo" value="Sertanejo" form="form">
+                    <input type="checkbox" id="sertanejo" name="musics" value="Sertanejo" form="form">
                     <label for="sertanejo">Sertanejo</label>
                 </div>
             </div>
@@ -211,7 +215,7 @@
         </div>
     </aside>
     <footer>
-        <button onclick="openPopup()">Enviar</button>
+        <button type="submit" form="form">Salvar</button>
     </footer>
 </body>
 <script src="script.js"></script>

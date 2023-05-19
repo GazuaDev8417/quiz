@@ -8,7 +8,7 @@ body{
     "personal main add"
     "footer footer footer";
     grid-template-columns: 20vw 1fr 20vw;
-    grid-template-rows: 7vh 1fr 7vh;
+    grid-template-rows: 10vh 1fr 7vh;
 
     @media(max-width: 600px){
         display: flex;
@@ -16,12 +16,12 @@ body{
     }
 }
 
-header{
+.main-header{
     grid-area: header;
     border-bottom: 1px solid;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 10px;
 
     @media(max-width: 600px){
@@ -31,15 +31,7 @@ header{
 
 header h1{
     font-family: 'Ysabeau', sans-serif;
-
-    @media(max-width: 600px){
-        font-size: 1em;
-    }
-}
-
-header .icon{
-    font-size: 2em;
-    cursor: pointer;
+    text-align: center;
 
     @media(max-width: 600px){
         font-size: 1em;
@@ -89,47 +81,91 @@ main{
     grid-area: main;
 }
 
-main .password-modal{
+main header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+main header .button{
+    width: 200px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: rgba(255,0,0,0.8);
+    text-align: center;
+    box-shadow: 2px 2px 4px;
+    padding: 5px;
+}
+
+.button:hover{
+    background-color: red;
+    color: white;
+    box-shadow: 2px 2px 4px black;
+}
+
+.button:active{
+    transform: scale(0.9);
+}
+
+main .popup{
     display: none;
-    position: absolute;
-    top: 25%;
+    position: fixed;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: lightgray;
-    width: 30%;
-    height: 18vh;
-    box-shadow: 3px 3px 6px;
-    border: none;
-    text-align: center;
-
-    @media(max-width: 600px){
-        position: fixed;
-        width: 80%;
-        height: 40vh;
-    }
+    background-color: rgba(0,0,0,0.8);
+    width: 35%;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px;
 }
 
-main .password-modal .text-content{
-    display: block;
-    margin: 10px 20px 15px;
+main .popup .popup-firstContents{
+    margin-top: 7vh;
 }
 
-main .password-modal input{
-    width: 70%;
-    height: 25px;
-    margin-bottom: 10px;
-}
-
-main .password-modal div{
-    width: 70%;
-    margin: auto;
+main .popup .card{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: white;
+    width: 80%;
+    box-shadow: 2px 2px 4px;
+    padding: 5px 5px 0 10px;
+    margin: auto;
+    border-radius: 10px;
 }
 
-main .password-modal div button{
+main .popup .card:hover{
+    cursor: pointer;
+    box-shadow: 3px 3px 6px;
+}
+
+main .popup .card .button{
     width: 100px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: rgba(255,0,0,0.8);
+    text-align: center;
+    color: black;
+    box-shadow: 2px 2px 4px black;
+}
+
+main .popup .card .button:hover{
+    background-color: red;
+    color: white;
+    box-shadow: 2px 2px 4px;
+}
+
+main .popup .button{
+    width: 100px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: rgba(255,0,0,0.8);
+    text-align: center;
+    box-shadow: 2px 2px 4px;
+    float: right;
+    margin: 10px;
 }
 
 main form fieldset{

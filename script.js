@@ -11,19 +11,57 @@ let sexOrientation
 const userName = document.getElementById('name')
 const tel = document.getElementById('whatsapp')
 const email = document.getElementById('email')
-const password = document.getElementById('password')
 const msg = document.getElementById('msg')
 const popup = document.querySelector('.password-modal')
 // Add info variables
-var selectedMusicStyles = document.querySelectorAll('input[type="checkbox"]')
+var selectedMusicStyles = document.querySelectorAll('input[name="musics"]')
 var selectedSports = document.querySelectorAll('input[name="sports"]')
 let musicStyles = []
 let sportsModalities = []
-// backend variables
-// const url = 'https://super-form-server.vercel.app'
-const url = 'http://localhost:3003'
 
 
+
+const openList = ()=>{
+    document.querySelector('.popup').style.display = 'block'
+
+    if(JSON.parse(localStorage.getItem('users')).length > 0){
+        showUserList()
+    }
+}
+
+const closeList = ()=>{
+    document.querySelector('.popup').style.display = 'none'
+}
+
+
+const usersStored = JSON.parse(localStorage.getItem('users'))
+
+const removeUser = (id)=>{
+    const newUsers = usersStored.filter(user => user.id !== id)
+    localStorage.setItem('users', JSON.stringify(newUsers))
+
+    location.reload()
+}
+
+const showUserList = ()=>{
+    document.querySelector('.popup-firstContents')
+        .innerHTML = usersStored && usersStored.map(user=>{
+        return`
+            <div class='card'>
+                <div>
+                    <div>${user.name}</div>
+                    <p>Preferências musicais:<br>
+                        ${JSON.parse(user.music).map(music =>' '+music)}</p>
+                    <p>Esportes:<br>
+                        ${JSON.parse(user.sports).map(sport => ' '+sport)}</p>
+                    Orientação sexual: ${user.genre}
+                </div>
+                <div onclick="removeUser('${user.id}')"
+                    class='button'>Remover</div>                
+            </div>
+        `
+    })
+}
 
 Array.from(selectedGenre).forEach(function(genre){
     genre.addEventListener('change', function(){
@@ -41,7 +79,6 @@ Array.from(selectedMusicStyles).forEach(function(style){
         }
     })
 })
-
 Array.from(selectedSports).forEach(function(sport){
     sport.addEventListener('change', function(){
         if(sport.checked){
@@ -49,7 +86,6 @@ Array.from(selectedSports).forEach(function(sport){
         }
     })
 })
-
 
 const enableRadios = ()=>{
     homo.removeAttribute('disabled')
@@ -83,64 +119,84 @@ other.addEventListener('input', ()=>{
 })
 
 
-const openPopup = ()=>{
-    popup.style.display = 'block'
-}
+let users = []
 
-const closePopup = ()=>{
-    popup.style.display = 'none'
-    password.value = ''
-}
+const isDuplicate = (array, obj)=>{
+    const check = array.some(arr=>{
+        return(
+            arr.name === obj.name &&
+            arr.whatsapp === obj.whatsapp &&
+            arr.email === obj.email &&
+            arr.message === obj.message &&
+            arr.genre === obj.genre &&
+            arr.music === obj.music &&
+            arr.sports === obj.sports
+        )
+    })
 
+    if(!check){
+        array.push(obj)
+        localStorage.setItem('users', JSON.stringify(array))
+    }else{
+        alert('Usuário já salvo!')
+    }
+}
 
 document.getElementById('form').addEventListener('submit', (e)=>{
     e.preventDefault()
-    
-    if(other.value){
-        const body = {
-            name: userName.value,
-            whatsapp: tel.value,
-            email: email.value,
-            password: password.value,
-            message: msg. value,
-            genre: other.value,
-            music: JSON.stringify(musicStyles),
-            sports: JSON.stringify(sportsModalities)
+
+    var checkedMusic = false, checkedSports = false, checkedGenre
+
+    for(let i = 0; i < selectedGenre.length; i++){
+        if(selectedGenre[i].checked){
+            checkedGenre = true
+            break
         }
-        fetch(`${url}/users`, {
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        }).then(res => res.text()).then(data=>{
-            alert(data)    
-            closePopup()
-        }).catch(e=>{
-            alert(e.message)
-        })
+    }
+
+    for(let i = 0; i < selectedMusicStyles.length; i++){
+        if(selectedMusicStyles[i].checked){
+            checkedMusic = true
+            break
+        }
+    }
+
+    for(let i = 0; i < selectedSports.length; i++){
+        if(selectedSports[i].checked){
+            checkedSports = true
+            break
+        }
+    }
+
+    if(!checkedGenre && other.disabled || !checkedMusic || !checkedSports){
+        alert('Preencha todos os campos!')
     }else{
-        const body = {
-            name: userName.value,
-            whatsapp: tel.value,
-            email: email.value,
-            password: password.value,
-            message: msg.value,
-            genre: sexOrientation,
-            music: JSON.stringify(musicStyles),
-            sports: JSON.stringify(sportsModalities)
+        if(other.value){
+            const body = {
+                id: Date.now().toString(18),
+                name: userName.value,
+                whatsapp: tel.value,
+                email: email.value,
+                message: msg. value,
+                genre: other.value,
+                music: JSON.stringify(musicStyles),
+                sports: JSON.stringify(sportsModalities)
+            }
+
+            isDuplicate(users, body)
+        }else{
+            const body = {
+                id: Date.now().toString(18),
+                name: userName.value,
+                whatsapp: tel.value,
+                email: email.value,
+                message: msg.value,
+                genre: sexOrientation,
+                music: JSON.stringify(musicStyles),
+                sports: JSON.stringify(sportsModalities)
+            }
+    
+            isDuplicate(users, body)
         }
-        fetch(`${url}/users`, {
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        }).then(res => res.text()).then(data=>{
-            alert(data)    
-            closePopup()
-        }).catch(e=>{
-            alert(e.message)
-        })
     }
 })
