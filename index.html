@@ -4,21 +4,215 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./img/icon.png" type="image/png">
     <link rel="stylesheet" href="style.css">
-    <title>Chat - Login</title>
+    <title>Forms</title>
 </head>
 <body>
-    <form id="form">
-        <fieldset>
-            <legend>Login</legend>
-            <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="nome@email.com"><br>
-            <label for="password">Senha:</label>
-            <input type="password" id="password" placeholder="Seua senha"><br>
-            <button type="submit">Entrar</button>
-        </fieldset>
-    </form>
+    <header>
+    </header>
+    <aside class="personal-info">
+        <h3>Informações sobre gênero</h3>
+        <div class="description">
+            Achamos importante e relevante coletar tais tipos de informações, devido a
+            grande diversidade de orientação sexual que há nos dias atuais. Isso tudo, é
+            claro somado também ao grande preconceito e violência que essas pessoas sofrem,
+            por isso para direcionarmos uma melhor maneira de tratamento e com respeito achamos
+            essencialmente necessário que conheçamos tais aspectos, é claro que não existe
+            a obrigação de ceder tais informações.
+        </div>
+        <div class="sex-orientation">
+            Orientação sexual:<br><br>
+            <input type="radio" name="genre" id="hetero" form="form" value="hetero">
+            <label for="hetero">Heterossexual</label><br>
+            <input type="radio" name="genre" id="homo" form="form" value="homo">
+            <label for="homo">Homossexual</label><br>
+            <input type="radio" name="genre" id="bissex" form="form" value="bissex">
+            <label for="bissex">Bissexual</label><br>
+            <input type="radio" name="genre" id="assex" form="form" value="assex">
+            <label for="assex">Assexual</label><br>
+            <input type="radio" name="genre" id="pansex" form="form" value="pansex">
+            <label for="pansex">Pansexual</label>
+            <div style="margin-top: 20px; line-height: 25px;" form="form">
+                Outro gênero? Informe aqui:<br>
+                <input type="text" id="other-orientation" form="form">
+                <div class="btn-container">
+                    <button id="enable">Habilitar</button>
+                    <button id="clear">Limpar</button>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <main>
+        <fieldset class="password-modal">
+            <label for="passowrd" class="text-content">
+                Agora você precisa elaborar uma senha
+            </label>
+            <input type="password" id="password" form="form" required><br>
+            <div>
+                <button type="submit" form="form">Enviar</button>
+                <button onclick="closePopup()">Cancela</button>
+            </div>
+            </fieldset>       
+        <h3>Informações de contato</h3>
+        <form id="form">
+            <fieldset class="contact">
+                <legend>Contato</legend>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" placeholder="Nome e sobrenome" required><br>
+                <label for="whatsapp">Whatsapp:</label>
+                <input 
+                    maxlength="11"
+                    onkeypress="return event.charCode > 47 && event.charCode < 58"
+                    type="tel"
+                    id="whatsapp"
+                    placeholder="DDD e telefone" required><br>
+                <label for="email">Email: </label>
+                <input type="email" id="email" placeholder="nome@email.com" required>
+            </fieldset>
+            <div class="text-about-msg">
+                A mensagem aqui é opcional, mas é interessante que você se expresse,
+                informe suas razões de estar entrando para a nossa comunidade.
+                Essa é uma maneira de nos conhecermos melhor e compartilhar experiências.
+                <p>Então, voilà</p>
+            </div>
+            <fieldset class="message">
+                <legend>Mensgem</legend>
+                <textarea id="msg" cols="30" rows="10"></textarea>
+            </fieldset>
+        </form>
+    </main>   
+    <aside class="add-info">
+        <h3>Informações adicionais</h3>
+        <div class="music">
+            Estilos musicais:<br><br>
+            <div class="music-styles">
+                <div>
+                    <input type="checkbox" id="axe" name="axe" value="Axé" form="form">
+                    <label for="axe">Axé</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="blues" name="blues" value="Blues" form="form">
+                    <label for="blues">Blues</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="country" name="country" value="Country" form="form">
+                    <label for="country">Country</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="eletronica" name="eletronica" value="Eletrônica" form="form">
+                    <label for="eletronica">Eletrônica</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="forro" name="forro" value="Forró" form="form">
+                    <label for="forro">Forró</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="funk" name="funk" value="Funk" form="form">
+                    <label for="funk">Funk</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="gospel" name="gospel" value="Gospel" form="form">
+                    <label for="gospel">Gospel</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="hip-hop" name="hip-hop" value="Hip-hop" form="form">
+                    <label for="hip-hop">Hip-hop</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="jazz" name="jazz" value="Jazz" form="form">
+                    <label for="jazz">Jazz</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="mpb" name="mpb" value="MPB" form="form">
+                    <label for="mpb">MPB</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="classic" name="classic" value="Música Clássica" form="form">
+                    <label for="classic">Erudita</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="pagode" name="pagode" value="Pagode" form="form">
+                    <label for="pagode">Pagode</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="pop" name="pop" value="Pop" form="form">
+                    <label for="pop">Pop</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="reggae" name="reggae" value="Reggae" form="form">
+                    <label for="reggae">Reggae</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="rock" name="rock" value="Rock" form="form">
+                    <label for="rock">Rock</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="samba" name="samba" value="Samba" form="form">
+                    <label for="samba">Samba</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="sertanejo" name="sertanejo" value="Sertanejo" form="form">
+                    <label for="sertanejo">Sertanejo</label>
+                </div>
+            </div>
+        </div>
+        <div class="sports">
+            Esportes:<br><br>
+            <div class="sports-types">
+                <div>
+                    <input type="checkbox" name="sports" id="soccer" value="Futebol">
+                    <label for="soccer">Futebol</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="sports" id="mma" value="MMA">
+                    <label for="mma">MMA</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="sports" id="fitness" value="Ginástica">
+                    <label for="fitness">Ginástica</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="sports" id="swimming" value="Natação">
+                    <label for="swimming">Natação</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="sports" id="athletics" value="Atletismo">
+                    <label for="athletics">Atletismo</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="sports" id="golf" value="Golfe">
+                    <label for="golf">Golfe</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="sports" id="baseball" value="Beiseball">
+                    <label for="baseball">Beiseball</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="sports" id="basket" value="Basquete">
+                    <label for="basket">Basquete</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="sports" id="tennis" value="Tênis">
+                    <label for="tennis">Tênis</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="sports" id="voley" value="Volei">
+                    <label for="voley">Volei</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="sports" id="boxe" value="Boxe">
+                    <label for="boxe">Boxe</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="sports" id="hockey" value="Hóquei">
+                    <label for="hockey">Hóquei</label>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <footer>
+        <button onclick="openPopup()">Enviar</button>
+    </footer>
 </body>
 <script src="script.js"></script>
 </html>
