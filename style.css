@@ -1,119 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Ysabeau:ital,wght@1,100&display=swap');
-
 body{
-    height: 100vh;
-    margin: 0;
-    display: grid;
-    grid-template-areas: 
-    "personal main add"
-    "footer footer footer";
-    grid-template-columns: 20vw 1fr 20vw;
-    grid-template-rows: 90vh;
-}
-
-h3{
-    text-align: center;
-    font-weight: 500;
-    font-size: 1.3em;
-}
-
-/* Ínicio das informações pessoais */
-.personal-info{
-    grid-area: personal;
-    border-right: 1px solid;
-}
-
-.personal-info .sex-orientation{
-    margin: 10px;
-}
-
-.personal-info .description{
-    margin: 30px 10px 40px;
-    font-size: 14px;
-}
-
-.personal-info .sex-orientation #other-orientation{
-    width: 95%;
-    height: 4vh;
-}
-
-/* Ínicio das informações de contato */
-main{
-    grid-area: main;
-}
-
-main form fieldset{
-    margin: 20px;
-}
-
-form .contact{
-    line-height: 30px;
-}
-
-main .text-about-msg{
-    margin: 10vh 20px 10px;
-}
-
-main .text-about-msg p{
-    font-family: 'Ysabeau', sans-serif;
-    font-weight: bold;
-    text-align: center;
-}
-
-form .message #msg{
-    width: 97%;
-    border: none;
-    outline: none;
-}
-
-form fieldset{
-    width: 30vw;
-}
-
-main form fieldset legend{
-    font-size: 18pt;
-}
-
-/* Ínicio das informações adicionais */
-.add-info{
-    grid-area: add;
-    border-left: 1px solid;
-}
-
-.add-info .music{
-    margin: 30px 10px;
-}
-
-.add-info .music .music-styles{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.add-info .sports{
-    margin: 30px 10px;
-}
-
-.add-info .sports .sports-types{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-footer{
-    grid-area: footer;
     display: flex;
-    align-items: center;
     justify-content: center;
-    border-top: 1px solid;
 }
 
-footer button{    
-    width: 90%;
-    border-radius: 20px;
-    font-size: 16pt;
+form{
+    margin-top: 10vh;
+    font-size: 15pt;
+}
+
+fieldset{
+    width: 30vw;
+    line-height: 7vh;
+    padding: 20px;
+    box-shadow: 3px 3px 6px;
+}
+
+legend{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+input{
+    width: 80%;
+    height: 30px;
+    font-size: 13pt;
+    padding-left: 10px;
+}
+
+button{
+    width: 50%;
+    height: 30px;
+    border-radius: 10px;
     cursor: pointer;
-    background-color: gray;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
 }
 
-footer button:hover{
+button:hover{
+    background-color: gray;
     color: white;
 }
