@@ -14,6 +14,10 @@ body{
         display: flex;
         flex-direction: column;
     }
+
+    @media(max-width: 700px){
+        grid-template-columns: 20vw 1fr 30vw;
+    }
 }
 
 .main-header{
@@ -74,6 +78,16 @@ h3{
         justify-content: space-between;
         margin: 10px 10px 0 0;
     }
+
+    @media(max-width: 700px){
+        text-align: center;
+    }
+}
+
+.personal-info .btn-container button{
+    @media(max-width: 700px){
+        width: 90%;
+    }
 }
 
 /* Ínicio das informações de contato */
@@ -89,6 +103,11 @@ main header{
     @media(max-width: 600px){
         flex-direction: column;
     }
+
+    @media(max-width: 700px){
+        flex-direction: column;
+    }
+    
 }
 
 main header .button{
