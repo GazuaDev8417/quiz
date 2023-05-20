@@ -15,8 +15,8 @@ body{
         flex-direction: column;
     }
 
-    @media(max-width: 700px){
-        grid-template-columns: 20vw 1fr 30vw;
+    @media(max-width: 800px){
+        grid-template-columns: 30vw 1fr 30vw;
     }
 }
 
@@ -38,7 +38,7 @@ header h1{
     text-align: center;
 
     @media(max-width: 600px){
-        font-size: 1em;
+        font-size: 1.5em;
     }
 }
 
@@ -76,17 +76,24 @@ h3{
     @media(max-width: 600px){
         display: flex;
         justify-content: space-between;
-        margin: 10px 10px 0 0;
+        margin: 10px 17px 0 0;
     }
 
-    @media(max-width: 700px){
-        text-align: center;
+    @media(max-width: 800px){
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 10px;
     }
 }
 
 .personal-info .btn-container button{
-    @media(max-width: 700px){
-        width: 90%;
+    @media(max-width: 800px){
+        width: 40%;
+    }
+
+    @media(max-width: 600px){
+        width: 30%;
     }
 }
 
@@ -100,14 +107,9 @@ main header{
     align-items: center;
     justify-content: space-around;
 
-    @media(max-width: 600px){
+    @media(max-width: 800px){
         flex-direction: column;
-    }
-
-    @media(max-width: 700px){
-        flex-direction: column;
-    }
-    
+    }    
 }
 
 main header .button{
@@ -239,6 +241,10 @@ form .message #msg{
 
 form fieldset{
     width: 30vw;
+
+    @media(max-width: 800px){
+        width: 40vw;
+    }
 }
 
 main form fieldset legend{
@@ -284,7 +290,7 @@ footer button{
     cursor: pointer;
     background-color: gray;
 
-    @media(max-width: 600px){
+    @media(max-width: 800px){
         font-size: 16px;
         margin: 10px;
     }
