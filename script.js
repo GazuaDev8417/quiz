@@ -18,8 +18,36 @@ var selectedMusicStyles = document.querySelectorAll('input[name="musics"]')
 var selectedSports = document.querySelectorAll('input[name="sports"]')
 let musicStyles = []
 let sportsModalities = []
+// Change background variable
+const time = new Date().toLocaleTimeString()
+const dayHour = time.substring(0,2)
+const bodyColor = document.body.style
+// BASE_URL variables
+const url = 'https://super-form-server-navy.vercel.app'
 
 
+
+switch(true){
+    case dayHour >= 06 && dayHour <= 10:
+        bodyColor.background = 'linear-gradient(#91ceff, yellow)'
+        break
+    case dayHour >= 11 && dayHour <= 14:
+        bodyColor.background = 'linear-gradient(#91ceff, yellow, #fbbe00)'
+        break
+    case dayHour >= 15 && dayHour <= 16:
+        bodyColor.background = 'linear-gradient(#91ceff, yellow, gray)'
+        break
+    case dayHour === 17:
+        bodyColor.background = 'linear-gradient(#2f3133, yellow, gray)'
+        break
+    case dayHour === 18:
+        bodyColor.background = 'linear-gradient(#2f3133, gray)'
+        break
+    case dayHour >= 19 && dayHour <= 05:
+        bodyColor.background = 'rgba(0,0,0,0.9)'
+        bodyColor.color = 'white'
+        break
+}
 
 
 const openList = ()=>{
@@ -38,7 +66,7 @@ const removeUser = (id)=>{
     const decide = window.confirm('Tem certeza que deseja deletar esse usuário?')
 
     if(decide){
-        fetch(`http://localhost:3003/user/${id}`, {
+        fetch(`${url}/user/${id}`, {
             method:'DELETE'
         }).then(res => res.text()).then(()=>{
             showUserList()
@@ -49,15 +77,9 @@ const removeUser = (id)=>{
 }
 
 const showUserList = ()=>{
-    fetch('http://localhost:3003/users').then(res=>{
-            if(res.ok){
-                return res.json()
-            }else{
-                return res.text()
-            }
-        }).then(data=>{   
+    fetch(`${url}/users`).then(res => res.ok ? res.json() : res.text()).then(data=>{
             document.querySelector('.popup-firstContents')
-                .innerHTML = data && data.map(user=>{
+                .innerHTML = data.length > 0 ? data.map(user=>{
                 return`
                     <div class='card'>
                         <div>
@@ -76,7 +98,9 @@ const showUserList = ()=>{
                         </div>               
                     </div>
                 `
-            }).join('')
+            }).join('') :  `<div style="color:white; margin:20px;">
+                                Você ainda não registrou nenhum usuário
+                            </disv>`
         }).catch(e=>{
             alert(e.message)
     })
@@ -151,7 +175,7 @@ document.getElementById('form').addEventListener('submit', (e)=>{
             music: JSON.stringify(musicStyles),
             sports: JSON.stringify(sportsModalities)
         }
-        fetch('http://localhost:3003/users', {
+        fetch(`${url}/users`, {
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -173,7 +197,7 @@ document.getElementById('form').addEventListener('submit', (e)=>{
             music: JSON.stringify(musicStyles),
             sports: JSON.stringify(sportsModalities)
         }
-        fetch('http://localhost:3003/users', {
+        fetch(`${url}/users`, {
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
