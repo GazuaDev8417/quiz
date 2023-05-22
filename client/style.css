@@ -135,11 +135,13 @@ main header .button{
 main .popup{
     display: none;
     position: fixed;
+    overflow: auto;
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0,0,0,0.9);
     width: 35%;
+    height: 40%;
     padding-bottom: 20px;
     border-radius: 10px;
     box-shadow: 2px 2px 4px;
@@ -156,12 +158,12 @@ main .popup .popup-firstContents{
 main .popup .card{
     display: flex;
     flex-direction: column;
-    align-items: center;
     color: white;
     width: 80%;
     box-shadow: 2px 2px 4px;
     padding: 5px 5px 0 10px;
     margin: auto;
+    margin-bottom: 20px;
     border-radius: 10px;
 
     @media(max-width: 600px){
