@@ -42,27 +42,33 @@ const showPopupBackground = ()=>{
 switch(true){
     case dayHour >= '06:00:00' && dayHour <= '10:59:59':
         bodyColor.background = 'linear-gradient(#91ceff, yellow)'
+        bodyColor.transition = '2s'
         showPopupBackground()
         break
     case dayHour >= '11:00:00' && dayHour <= '14:59:59':
         bodyColor.background = 'linear-gradient(#91ceff, yellow, #fbbe00)'
+        bodyColor.transition = '2s'
         showPopupBackground()
         break
-    case dayHour >= '13:00:00' && dayHour <= '16:59:59':
+    case dayHour >= '15:00:00' && dayHour <= '16:59:59':
         bodyColor.background = 'linear-gradient(#91ceff, yellow, gray)'
+        bodyColor.transition = '2s'
         showPopupBackground()
         break
     case dayHour >= '17:00:00' && dayHour <= '17:59:59':
         bodyColor.background = 'linear-gradient(#2f3133, yellow, gray)'
+        bodyColor.transition = '2s'
         showPopupBackground()
         break
     case dayHour >= '18:00:00' && dayHour <= '19:59:59':
         bodyColor.background = 'linear-gradient(#2f3133, gray)'
+        bodyColor.transition = '2s'
         showPopupBackground()
         break
     case dayHour >= '20:00:00' && dayHour <= '05:59:59':
         bodyColor.background = 'rgba(0,0,0,0.9)'
         bodyColor.color = 'white'
+        bodyColor.transition = '2s'
         showPopupBackground()
         break
 }
