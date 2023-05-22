@@ -20,32 +20,50 @@ let musicStyles = []
 let sportsModalities = []
 // Change background variable
 const time = new Date().toLocaleTimeString()
-const dayHour = time.substring(0,2)
+const dayHour = time
 const bodyColor = document.body.style
+const backgroundPopup = document.querySelector('.background-popup').style
 // BASE_URL variables
 const url = 'https://super-form-server-navy.vercel.app'
 
 
 
+
+const showPopupBackground = ()=>{
+    backgroundPopup.opacity = 1
+    backgroundPopup.transition = '1.5s'
+
+    setTimeout(()=>{
+        backgroundPopup.opacity = 0
+        backgroundPopup.transition = '1.5s'        
+    }, 3000)
+}
+
 switch(true){
-    case dayHour >= 06 && dayHour <= 10:
+    case dayHour >= '06:00:00' && dayHour <= '10:59:59':
         bodyColor.background = 'linear-gradient(#91ceff, yellow)'
+        showPopupBackground()
         break
-    case dayHour >= 11 && dayHour <= 14:
+    case dayHour >= '11:00:00' && dayHour <= '14:59:59':
         bodyColor.background = 'linear-gradient(#91ceff, yellow, #fbbe00)'
+        showPopupBackground()
         break
-    case dayHour >= 15 && dayHour <= 16:
+    case dayHour >= '13:00:00' && dayHour <= '16:59:59':
         bodyColor.background = 'linear-gradient(#91ceff, yellow, gray)'
+        showPopupBackground()
         break
-    case dayHour === 17:
+    case dayHour >= '17:00:00' && dayHour <= '17:59:59':
         bodyColor.background = 'linear-gradient(#2f3133, yellow, gray)'
+        showPopupBackground()
         break
-    case dayHour === 18:
+    case dayHour >= '18:00:00' && dayHour <= '19:59:59':
         bodyColor.background = 'linear-gradient(#2f3133, gray)'
+        showPopupBackground()
         break
-    case dayHour >= 19 && dayHour <= 05:
+    case dayHour >= '20:00:00' && dayHour <= '05:59:59':
         bodyColor.background = 'rgba(0,0,0,0.9)'
         bodyColor.color = 'white'
+        showPopupBackground()
         break
 }
 

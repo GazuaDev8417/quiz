@@ -151,6 +151,24 @@ main .popup{
     }
 }
 
+main .background-popup{
+    opacity: 0;
+    color: white;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0.9);
+    padding-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px;
+    padding: 20px;    
+
+    @media(max-width: 600px){
+        width: 90%;
+    }
+}
+
 main .popup .popup-firstContents{
     margin-top: 7vh;
 }
