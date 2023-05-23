@@ -33,9 +33,9 @@ const showPopupBackground = ()=>{
     backgroundPopup.opacity = 1
     backgroundPopup.transition = '1.5s'
 
-    setTimeout(()=>{
+    setTimeout(()=>{       
         backgroundPopup.opacity = 0
-        backgroundPopup.transition = '1.5s'        
+        backgroundPopup.transition = '1.5s'
     }, 3000)
 }
 
@@ -78,13 +78,11 @@ const closeList = ()=>{
 }
 
 
-const usersStored = JSON.parse(localStorage.getItem('users'))
-
-const removeUser = (id)=>{
-    const decide = window.confirm('Tem certeza que deseja deletar esse usuário?')
+const removeUser = (user)=>{
+    const decide = window.confirm(`Tem certeza que quer excluir ${user.name}`)
 
     if(decide){
-        fetch(`${url}/user/${id}`, {
+        fetch(`${url}/user/${user.id}`, {
             method:'DELETE'
         }).then(res => res.text()).then(()=>{
             showUserList()
@@ -111,14 +109,16 @@ const showUserList = ()=>{
                             Orientação sexual: ${user.genre}
                         </div>
                         <div style='display:flex;justify-content:center;'>
-                        <div onclick="removeUser('${user.id}')"
+                        <div onclick='removeUser(${JSON.stringify(user)})'
                             class='button'>Remover</div> 
                         </div>               
                     </div>
                 `
-            }).join('') :  `<div style="color:white; margin:20px;">
-                                Você ainda não registrou nenhum usuário
-                            </disv>`
+            }).join('') : `
+                <div style='color:white; text-align:center;'>
+                    Nenhum usuário registrado
+                </div>
+            `
         }).catch(e=>{
             alert(e.message)
     })
