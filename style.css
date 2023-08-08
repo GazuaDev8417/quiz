@@ -305,10 +305,12 @@ footer{
 
 footer button, input[type='reset']{    
     width: 30%;
-    border-radius: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px 4px black;
     font-size: 16pt;
     cursor: pointer;
-    background-color: gray;
+    background-color: rgb(27, 145, 235);    
 
     @media(max-width: 800px){
         font-size: 16px;
@@ -316,6 +318,10 @@ footer button, input[type='reset']{
     }
 }
 
-footer button:hover{
+footer button:hover, input[type='reset']:hover{
     color: white;
+}
+
+footer button:active, input[type='reset']:active{
+    transform: scale(0.9);
 }
