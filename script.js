@@ -109,11 +109,7 @@ const showUserList = ()=>{
                             <p>Esportes:<br>
                             ${JSON.parse(user.sports).map(sport => ' '+sport)}</p>
                             Orientação sexual: ${user.genre}
-                        </div>
-                        <div style='display:flex;justify-content:center;'>
-                        <div onclick='removeUser(${JSON.stringify(user)})'
-                            class='button'>Remover</div> 
-                        </div>               
+                        </div>             
                     </div>
                 `
             }).join('') : `
