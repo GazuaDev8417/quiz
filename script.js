@@ -25,6 +25,7 @@ const bodyColor = document.body.style
 const backgroundPopup = document.querySelector('.background-popup').style
 // BASE_URL variables
 const url = 'https://super-form-server-navy.vercel.app'
+//const url = 'http://localhost:3003'
 
 
 
@@ -100,7 +101,8 @@ const showUserList = ()=>{
                     <div class='card'>
                         <div>
                             <div style='text-align:center;'>
-                                <b>${user.name}</b>
+                                <b>${user.name}</b><br>
+                                <small>${user.message}</small>
                             </div>
                             <p>Preferências musicais:<br>
                             ${JSON.parse(user.music).map(music =>' '+music)}</p>
