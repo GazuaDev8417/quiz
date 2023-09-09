@@ -167,7 +167,7 @@ const showResultBox = ()=>{
     let progress = setInterval(() => {
         progressStartValue++
         progressValue.textContent = `${progressStartValue}%`
-        circularProgress.style.background = `conic-gradient(blue ${progressStartValue * 3}deg, rgba(255, 255, 255, .1) 0deg)`
+        circularProgress.style.background = `conic-gradient(blue ${progressStartValue * 3.6}deg, rgba(255, 255, 255, .1) 0deg)`
         
         if(progressStartValue === progressEndValue){
             clearInterval(progress)

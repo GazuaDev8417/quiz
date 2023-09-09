@@ -443,8 +443,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-
-    
+    margin-bottom: 20px;
 }
 
 .percentage-container .circular-progress::before{
