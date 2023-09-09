@@ -1,228 +1,176 @@
-//Sex orientation variables
-const homo = document.getElementById('homo')
-const hetero = document.getElementById('hetero')
-const bissex = document.getElementById('bissex')
-const assex = document.getElementById('assex')
-const pansex = document.getElementById('pansex')
-const other = document.getElementById('other-orientation')
-var selectedGenre = document.querySelectorAll('input[name="genre"]')
-let sexOrientation
-// Contact information
-const userName = document.getElementById('name')
-const tel = document.getElementById('whatsapp')
-const email = document.getElementById('email')
-const msg = document.getElementById('msg')
-const popup = document.querySelector('.password-modal')
-// Add info variables
-var selectedMusicStyles = document.querySelectorAll('input[name="musics"]')
-var selectedSports = document.querySelectorAll('input[name="sports"]')
-let musicStyles = []
-let sportsModalities = []
-// Change background variable
-const time = new Date().toLocaleTimeString()
-const dayHour = new Date().getHours()
-const bodyColor = document.body.style
-const backgroundPopup = document.querySelector('.background-popup').style
-// BASE_URL variables
-const url = 'https://super-form-server-navy.vercel.app'
-//const url = 'http://localhost:3003'
+const startBtn = document.querySelector('.start-btn')
+const popupInfo = document.querySelector('.popup-info')
+const exitBtn = document.querySelector('.exit-btn')
+const main = document.querySelector('.main')
+const continueBtn = document.querySelector('.continue-btn')
+const quizSection = document.querySelector('.quiz-section')
+const quizBox = document.querySelector('.quiz-box')
+const resultBox = document.querySelector('.result-box')
+const tryAgainBtn = document.querySelector('.tryAgain-btn')
+const goHomeBtn = document.querySelector('.goHome-btn')
 
 
 
-
-const showPopupBackground = ()=>{
-    backgroundPopup.opacity = 1
-    backgroundPopup.transition = '1.5s'
-
-    setTimeout(()=>{       
-        backgroundPopup.opacity = 0
-        backgroundPopup.transition = '1.5s'
-    }, 3000)
+startBtn.onclick = ()=>{
+    popupInfo.classList.add('active')
+    main.classList.add('active')
 }
 
-
-if(dayHour >= 6 && dayHour <= 10){
-    bodyColor.background = 'linear-gradient(#91ceff, yellow)'
-    bodyColor.transition = '2s'
-    showPopupBackground()
-}else if(dayHour >= 11 && dayHour <= 14){
-    bodyColor.background = 'linear-gradient(#91ceff, yellow, #fbbe00)'
-    bodyColor.transition = '2s'
-    showPopupBackground()
-}else if(dayHour >= 15 && dayHour <= 16){
-    bodyColor.background = 'linear-gradient(#91ceff, yellow, gray)'
-    bodyColor.transition = '2s'
-    showPopupBackground()
-}else if(dayHour === 17){
-    bodyColor.background = 'linear-gradient(#2f3133, yellow, gray)'
-    bodyColor.transition = '2s'
-    showPopupBackground()
-}else if(dayHour >= 18 && dayHour <= 19){
-    bodyColor.background = 'linear-gradient(#2f3133, gray)'
-    bodyColor.transition = '2s'
-    showPopupBackground()
-}else if(dayHour >= 20 || dayHour <= 5){
-    bodyColor.background = 'rgba(0,0,0,0.9)'
-    bodyColor.color = 'white'
-    bodyColor.transition = '2s'
-    showPopupBackground()
+exitBtn.onclick = ()=>{
+    popupInfo.classList.remove('active')
+    main.classList.remove('active')
 }
 
-
-const openList = ()=>{
-    document.querySelector('.popup').style.display = 'block'
-    showUserList()
-}
-
-const closeList = ()=>{
-    document.querySelector('.popup').style.display = 'none'
-}
-
-
-const removeUser = (user)=>{
-    const decide = window.confirm(`Tem certeza que quer excluir ${user.name}`)
-
-    if(decide){
-        fetch(`${url}/user/${user.id}`, {
-            method:'DELETE'
-        }).then(res => res.text()).then(()=>{
-            showUserList()
-        }).catch(e=>{
-            alert(e.message)
-        })
-    }
-}
-
-const showUserList = ()=>{
-    fetch(`${url}/users`).then(res => res.ok ? res.json() : res.text()).then(data=>{
-            document.querySelector('.popup-firstContents')
-                .innerHTML = data.length > 0 ? data.map(user=>{
-                return`
-                    <div class='card'>
-                        <div>
-                            <div style='text-align:center;'>
-                                <b>${user.name}</b><br>
-                                <small>${user.message}</small>
-                            </div>
-                            <p>Preferências musicais:<br>
-                            ${JSON.parse(user.music).map(music =>' '+music)}</p>
-                            <p>Esportes:<br>
-                            ${JSON.parse(user.sports).map(sport => ' '+sport)}</p>
-                            Orientação sexual: ${user.genre}
-                        </div>             
-                    </div>
-                `
-            }).join('') : `
-                <div style='color:white; text-align:center;'>
-                    Nenhum usuário registrado
-                </div>
-            `
-        }).catch(e=>{
-            alert(e.message)
-    })
-}
-
-
-Array.from(selectedGenre).forEach(function(genre){
-    genre.addEventListener('change', function(){
-        if(genre.checked){
-            other.setAttribute('disabled', 'disabled')
-            sexOrientation = genre.value
-        }
-    })
-})
-
-Array.from(selectedMusicStyles).forEach(function(style){
-    style.addEventListener('change', function(){
-        if(style.checked){
-            musicStyles.push(style.value)
-        }
-    })
-})
-Array.from(selectedSports).forEach(function(sport){
-    sport.addEventListener('change', function(){
-        if(sport.checked){
-            sportsModalities.push(sport.value)
-        }
-    })
-})
-
-
-const enableRadios = ()=>{
-    homo.removeAttribute('disabled')
-    hetero.removeAttribute('disabled')
-    bissex.removeAttribute('disabled')
-    assex.removeAttribute('disabled')
-    pansex.removeAttribute('disabled')
-}
-
-other.addEventListener('input', ()=>{
-    pansex.setAttribute('disabled', 'disabled')
-    assex.setAttribute('disabled', 'disabled')
-    bissex.setAttribute('disabled', 'disabled')
-    hetero.setAttribute('disabled', 'disabled')
-    homo.setAttribute('disabled', 'disabled')   
-    
-    if(!other.value){
-        enableRadios()
+document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' || e.key === 'Esc'){
+        popupInfo.classList.remove('active')
+        main.classList.remove('active')
     }
 })
 
-document.getElementById('enable').addEventListener('click', ()=>{
-    other.removeAttribute('disabled')
-})
 
-document.getElementById('clear').addEventListener('click', ()=>{
-    other.value = null
-    enableRadios()
-})
+continueBtn.onclick = ()=>{
+    quizSection.classList.add('active')
+    popupInfo.classList.remove('active')
+    main.classList.remove('active')
+    quizBox.classList.add('active')
+
+    showQuestions(0)
+    questionsCounter(1)
+    headerScore()
+}
 
 
-document.getElementById('form').addEventListener('submit', (e)=>{
-    e.preventDefault()
-    
-    if(other.value){
-        const body = {
-            name: userName.value,
-            whatsapp: tel.value,
-            email: email.value,
-            message: msg. value,
-            genre: other.value,
-            music: JSON.stringify(musicStyles),
-            sports: JSON.stringify(sportsModalities)
-        }
-        fetch(`${url}/users`, {
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        }).then(res => res.text()).then(data=>{
-            alert(data)
-        }).catch(e=>{
-            alert(e.message)
-        })
-        
+tryAgainBtn.onclick = ()=>{
+    quizBox.classList.add('active')
+    resultBox.classList.remove('active')
+
+    questionsCount = 0
+    questionsNumb = 1
+    userScore = 0
+
+    showQuestions(questionsCount)
+    questionsCounter(questionsNumb)
+    nextBtn.classList.remove('enable')
+
+    headerScore()
+}
+
+
+goHomeBtn.onclick = ()=>{
+    quizSection.classList.remove('active')
+    nextBtn.classList.remove('enable')
+    resultBox.classList.remove('active')
+
+    questionsCount = 0
+    questionsNumb = 1
+    userScore = 0
+
+    showQuestions(questionsCount)
+    questionsCounter(questionsNumb)
+}
+
+/* Getting questions from array */
+let questionsCount = 0
+let questionsNumb = 1
+let userScore = 0
+const nextBtn = document.querySelector('.next-btn')
+const optionList = document.querySelector('.option-list')
+
+nextBtn.onclick = ()=>{
+    if(questionsCount < questions.length - 1){
+        questionsCount++
+        showQuestions(questionsCount)
+
+        questionsNumb++
+        questionsCounter(questionsNumb)
+
+        nextBtn.classList.remove('enable')
     }else{
-        const body = {
-            name: userName.value,
-            whatsapp: tel.value,
-            email: email.value,
-            message: msg.value,
-            genre: sexOrientation,
-            music: JSON.stringify(musicStyles),
-            sports: JSON.stringify(sportsModalities)
-        }
-        fetch(`${url}/users`, {
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(body)
-        }).then(res => res.text()).then(data=>{
-            alert(data)
-        }).catch(e=>{
-            alert(e.message)
-        })
+        showResultBox()
     }
-})
+}
+
+
+const showQuestions = (index)=>{
+    const questionText = document.querySelector('.question-text')    
+    questionText.textContent = `${questions[index].numb}. ${questions[index].question}`
+    
+    let optionTag = `
+        <div class="option"><span>${questions[index].options[0]}</span></div>
+        <div class="option"><span>${questions[index].options[1]}</span></div>
+        <div class="option"><span>${questions[index].options[2]}</span></div>
+        <div class="option"><span>${questions[index].options[3]}</span></div>
+    `
+    optionList.innerHTML = optionTag
+
+    const option = document.querySelectorAll('.option')
+    for(let i = 0; i < option.length; i++){
+        option[i].setAttribute('onclick', 'optionSelected(this)')
+    }
+}
+
+
+const optionSelected = (answer)=>{
+    let userAnswer = answer.textContent
+    let correctAnswer = questions[questionsCount].answer
+    let allOptions = optionList.children.length
+    
+    if(userAnswer === correctAnswer){
+        answer.classList.add('correct')
+        userScore += 1
+        
+        headerScore()
+    }else{
+        answer.classList.add('incorrect')
+
+        for(let i = 0; i < allOptions; i++){
+            if(optionList.children[i].textContent === correctAnswer){
+                optionList.children[i].setAttribute('class', 'option correct')
+            }
+        }
+    }    
+    
+    for(let i = 0; i < allOptions; i++){
+        optionList.children[i].classList.add('disabled')
+    }
+
+    nextBtn.classList.add('enable')
+}
+
+
+const questionsCounter = (index)=>{
+    const questionTotal = document.querySelector('.question-total')
+    questionTotal.textContent = `${index}ª de ${questions.length} questões`
+}
+
+
+const headerScore = ()=>{
+    const headerScoreText = document.querySelector('.header-score')
+    headerScoreText.textContent = `Score: ${userScore} / ${questions.length}`
+}
+
+
+const showResultBox = ()=>{
+    quizBox.classList.remove('active')
+    resultBox.classList.add('active')
+
+    const scoreText = document.querySelector('.score-text')
+    scoreText.textContent = `Você acertou ${userScore} de ${questions.length}`
+
+    const circularProgress = document.querySelector('.circular-progress')
+    const progressValue = document.querySelector('.progress-value')
+    let progressStartValue = -1
+    let progressEndValue = (userScore / questions.length) * 100
+    let speed = 30
+
+    let progress = setInterval(() => {
+        progressStartValue++
+        progressValue.textContent = `${progressStartValue}%`
+        circularProgress.style.background = `conic-gradient(blue ${progressStartValue * 3}deg, rgba(255, 255, 255, .1) 0deg)`
+        
+        if(progressStartValue === progressEndValue){
+            clearInterval(progress)
+        }
+    }, speed);
+}
